@@ -9,15 +9,7 @@ from test_dbconfig import get_db_kwargs
 
 DB_KWARGS = get_db_kwargs()
 
-# ˅
-DB_KWARGS_TEXT = {
-    "user":"challenger",
-    "password":"not_the_real_password",
-    "dbname":"coding-challenge-db",
-    "host":"34.84.8.142"
-}
-
-def exc_qrs_get_dfs(query_string_list):
+def exc_qrs_get_dfs (query_string_list):
     """Excute the list of queries as sql and returns dataframes.
 
     Args:
@@ -34,12 +26,13 @@ def exc_qrs_get_dfs(query_string_list):
 
     # declare dataframe list
     df_list = []
-    # loop through the list
-    
-    for query in query_string_list:           
-        try:
-             # connect to server
-            con = pg.connect(**DB_KWARGS_TEXT)    
+            
+    try:
+        # connect to server
+        con = pg.connect(**DB_KWARGS) 
+        
+        # loop through the list 
+        for query in query_string_list:    
             # create a cursor
             cur = con.cursor()
         
@@ -63,12 +56,12 @@ def exc_qrs_get_dfs(query_string_list):
 
             response = df_list
 
-        except pg.Error as error:
-            for query in query_string_list:
-                response.append(error)
-        finally:
-            if con is not None:
-                con.close()
+    except pg.Error as error:
+        for query in query_string_list:
+            response.append(error)
+    finally:
+        if con is not None:
+            con.close()
 
     return response
     

@@ -1,16 +1,15 @@
 {% extends "block-container.html" %}
 
 {% block json %}
+
 <script>
 	console.log("--> at json <--")
 </script>
-
 
 <h1 style="color: coral;">Database Log of JSON</h1>
 
 <h2 id="person">For Person: </h2>
 <h3 id="items">Item Amount: </h3>
-
 
 <table id="table" border="1" class="dataframe">
 	<thead>
@@ -28,14 +27,14 @@
 	var person = params.get("person");
 	document.getElementById("person").append(person);
 
-	// Set variable equal 
+	// Set variable equal number of items specified by the user
 	var itemNumber = {{ item_count }};
 	document.getElementById("items").append(itemNumber);
 
 	// Creates a variable to store data
 	var data = {{ data | safe}};
 
-	//   Creates cells in the table and adds data returned from the database
+	// Creates cells in the table and adds data returned from the database
 	if (person) {
 		for(let i=0; i < itemNumber ; i++) {
 			var table = document.getElementById("table");

@@ -1,19 +1,14 @@
-"""This module has the functions that get data from the database"""
-
+"""This module has the functions that gets data from the database"""
 
 import logging as log
-#import io
 from pandas import DataFrame
 
-
-from test_database import (
-    exc_qrs_get_dfs
-)
+from test_database import exc_qrs_get_dfs
 
 log.basicConfig(level=log.DEBUG)
 log.info('----- QRS_GETS.PY -----')
 
-def get_table(table=None, person="", type=""):
+def get_table (table=None, person="", type=""):
     """
         Gets all data needed to display map from the desk being scanned.
 
@@ -29,11 +24,11 @@ def get_table(table=None, person="", type=""):
 
     log.info(">> get_table(table=None). table: %s", table)
 
-    # Create a list of queries to send to the database
-    
-    # ˅
+    # Create a list of queries to send to the database depending on the type that is selected
     if type == "text":
-        query_select_data = ("SELECT data.id, data.text FROM data JOIN records ON records.data_id = data.id WHERE records.person='" + person + "'")
+        query_select_data = ("SELECT data.id, data.text FROM data " +
+                                "JOIN records ON records.data_id = data.id " + 
+                                "WHERE records.person='" + person + "'")
 
         query_list = [
             query_select_data    
@@ -42,9 +37,10 @@ def get_table(table=None, person="", type=""):
         log.info("query list: %s", query_list)
 
         try:
-            # get the data
+            # Get data from database 
             response_list = exc_qrs_get_dfs(query_list)
             log.info("database responses: %s", response_list)
+
 
             response_object = {
                 "data_table": response_list[0]
@@ -57,7 +53,9 @@ def get_table(table=None, person="", type=""):
 
         return response_object
 
-    query_select_data = ("SELECT data.id, data.json FROM data JOIN records ON records.data_id = data.id WHERE records.person='" + person + "'")
+    query_select_data = ("SELECT data.id, data.json FROM data " + 
+                            "JOIN records ON records.data_id = data.id " + 
+                            "WHERE records.person='" + person + "'")
 
     query_list = [
         query_select_data    
@@ -66,7 +64,7 @@ def get_table(table=None, person="", type=""):
     log.info("query list: %s", query_list)
 
     try:
-        # get the data
+        # Get data from database 
         response_list = exc_qrs_get_dfs(query_list)
         log.info("database responses: %s", response_list)
 
