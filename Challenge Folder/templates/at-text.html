@@ -8,8 +8,8 @@
 
 <h1 style="color: cornflowerblue;">Database Log of TEXT</h1>
 
-<h2 id="person">for peson: </h2>
-<h3 id="items">item amount: </h3>
+<h2 id="person">For Person: </h2>
+<h3 id="items">Item Amount: </h3>
 
 
 <table id="table" border="1" class="dataframe">
@@ -21,9 +21,9 @@
 	</thead>
 	<tbody>
 	</tbody>
-  </table>
+</table>
 
-  <script>
+<script>
 	var params = new URLSearchParams(location.search);
 	var person = params.get("person");
 	document.getElementById("person").append(person);
@@ -31,49 +31,22 @@
 	var itemNumber = {{item_count}};
 	document.getElementById("items").append(itemNumber);
 
-  // ˅
-  var data = {{ data | safe}};
-  var records = {{ records | safe}};
+	// Creates a variable to store data˅
+	var data = {{ data | safe}};
 
-  let i = 0;
-
-//   ˅
-if (person) {
-	for(i=0,c=0; i < itemNumber && c < 100; c++) {
-
-		for (let j = 0; j < records.length; j++) {
-
-			if (records[j]["person"] == person) {
-
-				for (let k = 0; k < data.length; k++) {
-
-					if (records[j]["data_id"] == data[k]["id"]) {
-						var table = document.getElementById("table");
-						var row = table.insertRow(-1);
-						var cell_id = row.insertCell(0);
-						var cell_data = row.insertCell(1);
-						cell_id.innerHTML = data[k]["id"];
-						cell_data.innerHTML = data[k]["text"];
-
-						i++;
-						
-					}
-					if (i >= itemNumber) {
-							break;
-						}
-
-				}
-
-			}
-			if (i >= itemNumber) {
-				break;
-			}
-		}
+	// Creates cells in the table and adds data returned from the database
+	if (person) {
+		for(let i=0 ; i < itemNumber ; i++) {
+			var table = document.getElementById("table");
+			var row = table.insertRow(-1);
+			var cell_id = row.insertCell(0);
+			var cell_data = row.insertCell(1);
+			cell_id.innerHTML = data[i]["id"];
+			cell_data.innerHTML = data[i]["text"];
+		}	
 	}
-}
 
-
-  </script>
+</script>
 <br>
 
 <!-- ˅This is the script that measures the performance, not allowed to edit this section.˅  -->

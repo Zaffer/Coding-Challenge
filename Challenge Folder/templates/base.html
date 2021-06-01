@@ -1,56 +1,51 @@
 <!doctype html>
 <html>
 
-<head>	
-	<title>Coding Challenge</title>
+	<head>	
+		<title>Coding Challenge</title>
 
-	<link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
-	<link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+		<link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+		<link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
-	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<!-- ˅ -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+		<!-- ˅ -->
+		<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-	<link type="text/css" href="{{ url_for('static', filename='styles/toastr.min.css') }}" rel="stylesheet" />
-	<script src="{{ url_for('static', filename='scripts/toastr.min.js') }}"></script>
+		<link type="text/css" href="{{ url_for('static', filename='styles/toastr.min.css') }}" rel="stylesheet" />
+		<script src="{{ url_for('static', filename='scripts/toastr.min.js') }}"></script>
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
-	<script defer src="{{ url_for('static', filename='scripts/fontawesome/regular.min.js') }}"></script>
-	<script defer src="{{ url_for('static', filename='scripts/fontawesome/solid.min.js') }}"></script>
-	<script defer src="{{ url_for('static', filename='scripts/fontawesome/fontawesome.min.js') }}"></script>
+		<script defer src="{{ url_for('static', filename='scripts/fontawesome/regular.min.js') }}"></script>
+		<script defer src="{{ url_for('static', filename='scripts/fontawesome/solid.min.js') }}"></script>
+		<script defer src="{{ url_for('static', filename='scripts/fontawesome/fontawesome.min.js') }}"></script>
 
-	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-	<script src="{{ url_for('static', filename='script.js') }}"></script>
-</head>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+		<script src="{{ url_for('static', filename='script.js') }}"></script>
+	</head>
 
-<body>
-	<script>
-		console.log("- base -")
-	</script>
+	<body>
+		<script>
+			console.log("- base -")
+		</script>
 
-<h1>CODING CHALLENGE</h1>
+		<h1>CODING CHALLENGE</h1>
 
-<button onclick="location = '/'">Home</button>
-<br><br>
+		<button onclick="location = '/'">Home</button>
+		<br><br>
 
-<img id="coding-time" src="{{ url_for('static', filename='images/circle-marker-red.gif') }}" alt="">
-<script>
-	$('#coding-time').hide();
-</script>
+		<img id="coding-time" src="{{ url_for('static', filename='images/circle-marker-red.gif') }}" alt=""/>
+		
+		<script>
+			$('#coding-time').hide();
+		</script>
 
-{% block index %}{% endblock index %}
+		{% block index %}{% endblock index %}
 
+		{% block container %}{% endblock container %}
 
-{% block container %}{% endblock container %}
+		<footer></footer>		
 
-
-	
-
-</body>
-<footer>
-
-</footer>
-
+	</body>
 </html>

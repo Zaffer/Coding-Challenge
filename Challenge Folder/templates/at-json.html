@@ -8,8 +8,8 @@
 
 <h1 style="color: coral;">Database Log of JSON</h1>
 
-<h2 id="person">for peson: </h2>
-<h3 id="items">item amount: </h3>
+<h2 id="person">For Person: </h2>
+<h3 id="items">Item Amount: </h3>
 
 
 <table id="table" border="1" class="dataframe">
@@ -28,51 +28,24 @@
 	var person = params.get("person");
 	document.getElementById("person").append(person);
 
+	// Set variable equal 
 	var itemNumber = {{ item_count }};
 	document.getElementById("items").append(itemNumber);
 
-	// ˅
+	// Creates a variable to store data
 	var data = {{ data | safe}};
-	var records = {{ records | safe}};
 
-	let i = 0;
-
-//   ˅
-if (person) {
-	for(i=0,c=0; i < itemNumber && c < 1000; c++) {
-
-		for (let j = 0; j < records.length; j++) {
-
-			if (records[j]["person"] == person) {
-
-				for (let k = 0; k < data.length; k++) {
-
-					if (records[j]["data_id"] == data[k]["id"]) {
-						var table = document.getElementById("table");
-						var row = table.insertRow(-1);
-						var cell_id = row.insertCell(0);
-						var cell_data = row.insertCell(1);
-						cell_id.innerHTML = data[k]["id"];
-						cell_data.innerHTML = data[k]["json"];
-
-						i++;
-						
-					}
-					if (i >= itemNumber) {
-							break;
-						}
-
-				}
-
-			}
-			if (i >= itemNumber) {
-				break;
-			}
+	//   Creates cells in the table and adds data returned from the database
+	if (person) {
+		for(let i=0; i < itemNumber ; i++) {
+			var table = document.getElementById("table");
+			var row = table.insertRow(-1);
+			var cell_id = row.insertCell(0);
+			var cell_data = row.insertCell(1);
+			cell_id.innerHTML = data[i]["id"];
+			cell_data.innerHTML = data[i]["json"];			
 		}
 	}
-}
-
-
 </script>
 <br>
 

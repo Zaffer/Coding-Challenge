@@ -8,12 +8,11 @@
 
 <div id="container">
 
+  {% include "block-test.html" %}
 
-{% include "block-test.html" %}
+  {% block json %}{% endblock json %}
 
-{% block json %}{% endblock json %}
-
-{% block text %}{% endblock text %}
+  {% block text %}{% endblock text %}
 
 </div>
 

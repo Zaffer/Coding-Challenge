@@ -69,26 +69,21 @@ def at_test(item_count=None):
     hit_time = time.time()
 	#  ˄This is the script that measures the performance, not allowed to edit this section.˄ 
 
-    # <- get email query string
+    # <- get person and type values from query string
     person_query = request.args.get('person', type = str)
 
     type_query = request.args.get('type', type = str)
 
-    # <- get user info
-    response = gets.get_table("records")
-    if isinstance(response, Exception):
-        return render_template('at-error.html', message="There was an error.", error=response)
-
-    records_json = response["records_table"].to_json(orient="records")
-
-    response2 = gets.get_table("data")
+    # <- get data from database
+    response2 = gets.get_table("data", person_query, type_query)
 
     if item_count > 100:
 
         return render_template(
             'at-error.html',
             message="More then 100 items selected, too many. Item Count: ",
-            error=item_count)
+            error=item_count    
+        )
 
     if (type_query == "text"):
 
@@ -96,7 +91,6 @@ def at_test(item_count=None):
 
         return render_template(
             'at-text.html',
-            records=records_json,
             data=data_text,
             item_count=item_count,
             hit=hit_time)
@@ -105,7 +99,6 @@ def at_test(item_count=None):
 
     return render_template(
         'at-json.html',
-        records=records_json,
         data=data_json,
         item_count=item_count,
         hit=hit_time)
