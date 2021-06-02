@@ -4,6 +4,7 @@
 import logging as log
 #import io
 from pandas import DataFrame
+from flask import request
 
 
 from test_database import (
@@ -12,6 +13,7 @@ from test_database import (
 
 log.basicConfig(level=log.DEBUG)
 log.info('----- QRS_GETS.PY -----')
+
 
 def get_table(table=None):
     """Gets all data needed to display map from the desk being scanned.
@@ -26,13 +28,17 @@ def get_table(table=None):
     log.info(">> get_table(table=None). table: %s", table)
 
     # ˅
-    query_select_records = ("SELECT * FROM records")
+    person_query = request.args.get('person')
+    print(person_query)
+    query_select_records = (
+        "SELECT * FROM records WHERE person = '{person}'".format(person=person_query))
 
-    query_select_data = ("SELECT * FROM data")
+    # query_select_data = ("SELECT * FROM data")
 
     query_list = [
         query_select_records,
-        query_select_data]
+        # query_select_data
+    ]
     log.info("query list: %s", query_list)
 
     try:
@@ -41,7 +47,7 @@ def get_table(table=None):
         log.info("database responses: %s", response_list)
 
         response_object = {
-            "records_table":response_list[0],
+            "records_table": response_list[0],
             "data_table": response_list[1]}
 
     except Exception as error:

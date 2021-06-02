@@ -30,13 +30,13 @@ def index():
         'at-index.html')
 
 
-#this is not in use
+# this is not in use
 @app.route('/log', methods=['GET'])
 def at_log():
     """Runs when GET requested on '/log'.
-    
+
     When user selects view log from the home page.
-    
+
     Return:
         render_template (flask): html template based on logic from this app
     """
@@ -65,14 +65,14 @@ def at_test(item_count=None):
         render_template (flask): html template based on logic from this app"""
     log.info("@ at_test(item_count=None): %s", item_count)
 
-    #  ˅This is the script that measures the performance, not allowed to edit this section.˅ 
+    #  ˅This is the script that measures the performance, not allowed to edit this section.˅
     hit_time = time.time()
-	#  ˄This is the script that measures the performance, not allowed to edit this section.˄ 
+    #  ˄This is the script that measures the performance, not allowed to edit this section.˄
 
     # <- get email query string
-    person_query = request.args.get('person', type = str)
+    person_query = request.args.get('person', type=str)
 
-    type_query = request.args.get('type', type = str)
+    type_query = request.args.get('type', type=str)
 
     # <- get user info
     response = gets.get_table("records")
@@ -100,7 +100,7 @@ def at_test(item_count=None):
             data=data_text,
             item_count=item_count,
             hit=hit_time)
-    
+
     data_json = response2["data_table"].to_json(orient="records")
 
     return render_template(

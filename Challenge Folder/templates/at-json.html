@@ -35,19 +35,33 @@
 	var data = {{ data | safe}};
 	var records = {{ records | safe}};
 
-	let i = 0;
+	console.log(records)
+	//   ˅
 
-//   ˅
-if (person) {
-	for(i=0,c=0; i < itemNumber && c < 1000; c++) {
+	let newRecords = [];
+	let newData = [];
 
-		for (let j = 0; j < records.length; j++) {
+	for (z = 0; z < records.length; z++) {
+		if (records[z].person == person) {
+			newRecords.push(records[z])
+		}
+	}
 
-			if (records[j]["person"] == person) {
+
+
+	console.log(newData);
+
+	console.log(newRecords)
+
+	if (person) {
+		for (i = 0, c = 0; i < itemNumber && c < records.length; c++) {
+
+			if (records[c]["person"] == person) {
 
 				for (let k = 0; k < data.length; k++) {
 
-					if (records[j]["data_id"] == data[k]["id"]) {
+					if (records[c]["data_id"] == data[k]["id"]) {
+						console.log(records[c]["data_id"])
 						var table = document.getElementById("table");
 						var row = table.insertRow(-1);
 						var cell_id = row.insertCell(0);
@@ -56,21 +70,49 @@ if (person) {
 						cell_data.innerHTML = data[k]["json"];
 
 						i++;
-						
+
+					} else {
+						continue;
 					}
-					if (i >= itemNumber) {
-							break;
-						}
-
 				}
-
-			}
-			if (i >= itemNumber) {
-				break;
 			}
 		}
 	}
-}
+
+	// if (person) {
+	// 	for (i = 0, c = 0; i < itemNumber && c < 1000; c++) {
+
+	// 		for (let j = 0; j < records.length; j++) {
+
+	// 			if (records[j]["person"] == person) {
+
+	// 				for (let k = 0; k < data.length; k++) {
+
+	// 					if (records[j]["data_id"] == data[k]["id"]) {
+	// 						console.log(records[j]["data_id"])
+	// 						var table = document.getElementById("table");
+	// 						var row = table.insertRow(-1);
+	// 						var cell_id = row.insertCell(0);
+	// 						var cell_data = row.insertCell(1);
+	// 						cell_id.innerHTML = data[k]["id"];
+	// 						cell_data.innerHTML = data[k]["json"];
+
+	// 						i++;
+
+	// 					}
+	// 					if (i >= itemNumber) {
+	// 						break;
+	// 					}
+
+	// 				}
+
+	// 			}
+	// 			if (i >= itemNumber) {
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 
 </script>

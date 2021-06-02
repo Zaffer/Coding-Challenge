@@ -6,3 +6,12 @@ toastr.options = {
   "timeOut": "10000",
   "extendedTimeOut": "1000",
 }
+
+function indexGo() {
+  location.assign('/test/' + document.getElementById('items').value +'?person=james');
+  $('#coding-time').show();
+}
+
+function keyDown() {
+  if(event.keyCode == 13){document.getElementById('go').click()}
+}

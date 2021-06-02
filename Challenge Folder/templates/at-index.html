@@ -29,14 +29,10 @@
   <form>
     <label for="items">
         Quantity of data items to test with:
-        <input id="items" type="number" name="items" 
-    onkeydown="if(event.keyCode == 13){document.getElementById('go').click()}">
+        <input id="items" type="number" name="items" onkeydown=keyDown()>
     </label>
 
-    <button id="go" type="button" onclick="
-      location.assign('/test/' + document.getElementById('items').value +'?person=james');
-      $('#coding-time').show();
-      ">
+    <button id="go" type="button" onclick=indexGo()>
     <i class="fas fa-thumbs-up"></i>
     GO!
   </button>
