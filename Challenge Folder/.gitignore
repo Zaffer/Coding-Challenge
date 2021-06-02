@@ -2,4 +2,4 @@
 #database.ini
 __pycache__/
 #.gcloudignore
-#venv
+venv/
