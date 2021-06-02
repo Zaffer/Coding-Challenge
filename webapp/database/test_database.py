@@ -5,7 +5,7 @@ import io
 import pandas as pd
 import psycopg2 as pg
 
-from test_dbconfig import get_db_kwargs
+from webapp.database.test_dbconfig import get_db_kwargs
 
 DB_KWARGS = get_db_kwargs()
 

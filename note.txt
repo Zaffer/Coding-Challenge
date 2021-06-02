@@ -1,0 +1,50 @@
+******* get_table
+#  get_table From test_gets which is used as gets in main.py
+#  get_table(table=None). table: records => from main.py 
+#  query list: ['SELECT * FROM records', 'SELECT * FROM data']
+# database responses 
+INFO:root:database responses: [      id person  data_id
+0      1  james        1
+1      2    ben        2
+2      3    bob        3
+3      4   beca        4
+4      5   beth        5
+..   ...    ...      ...
+325  596  james       96
+326  597    ben       97
+327  598    bob       98
+328  599   beca       99
+329  600   beth      100
+[330 rows x 3 columns],       id                  text                  json
+0      1  FRjyDMTIlhfgHulKlwTo  76804368261415851081
+1      2  cnxXAcaTFxmCKWJkNSFy  51985402815675918573
+2      3  NkCxCNFafmivDGTgLicH  28370149236115983866
+3      4  HnGfyjsvkeDDGJvjbaWL  77068818919490277661
+4      5  BNVMXzZwjusRSgdEzSzK  58225069201937675215
+..   ...                   ...                   ...
+105  106  lXFqZvpdoxrShiGijylU  15559236555581411357
+106  107  SWEBrKwIjlOqlcCILZvg  82750170102420616491
+107  108  clQGbyuclGArgEOkQssT  71714899842878752323
+108  109  MMMYAfigvAMtKeDplXnW  48114340836732061645
+109  110  GaAqtqoroYPddkQSBlzJ  66933484735849324389
+[110 rows x 3 columns]]
+
+
+# When table = records
+INFO:root:records response object: {'records_table':       id person  data_id
+0      1  james        1
+1      2    ben        2
+2      3    bob        3
+3      4   beca        4
+4      5   beth        5
+..   ...    ...      ...
+325  596  james       96
+326  597    ben       97
+327  598    bob       98
+328  599   beca       99
+329  600   beth      100
+[330 rows x 3 columns]}
+# When table = data
+
+
+

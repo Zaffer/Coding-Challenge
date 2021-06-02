@@ -6,19 +6,17 @@ import logging as log
 from pandas import DataFrame
 
 
-from test_database import (
+from webapp.database.test_database import (
     execute_queries_get_dataframes,
     exc_qrs_get_dfs)
 
 log.basicConfig(level=log.DEBUG)
 log.info('----- QRS_GETS.PY -----')
 
-def get_table(table=None):
+def get_table(table=None, item_count=None, person=None):
     """Gets all data needed to display map from the desk being scanned.
-
     Args:
         table=None (str): determines which table to return
-
     Return:
         response_object (obj): python object of returned dataframes of the following:
             "users_table" (df): if arg was user
@@ -26,7 +24,16 @@ def get_table(table=None):
     log.info(">> get_table(table=None). table: %s", table)
 
     # ˅
-    query_select_records = ("SELECT * FROM records")
+    if item_count != None and person != None:
+        query_a = ("SELECT * FROM records WHERE person='{0}' Limit {1}").format(person,item_count)
+
+    if item_count != None and person == None:
+        query_a = ("SELECT * FROM records Limit {0}").format(item_count)
+
+    if item_count == None and person != None:
+        query_a = ("SELECT * FROM records WHERE person='{0}'").format(person)
+    
+    query_select_records = (query_a)
 
     query_select_data = ("SELECT * FROM data")
 
@@ -42,7 +49,8 @@ def get_table(table=None):
 
         response_object = {
             "records_table":response_list[0],
-            "data_table": response_list[1]}
+            "data_table": response_list[1]
+            }
 
     except Exception as error:
         log.info(error)
@@ -58,3 +66,7 @@ def get_table(table=None):
         return response_object
 
     return response_object
+
+
+
+

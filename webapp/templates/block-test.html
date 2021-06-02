@@ -7,11 +7,10 @@
 
 <div style="border: solid black;">
     <form>
-
         <!-- email -->
         <label for="person">
             Person to search for:
-            <input type="text" name="person">
+            <input type="text" name="person" id="search_person">
         </label>
 
         <!-- ˅ -->
@@ -25,13 +24,16 @@
         <input type="checkbox" value="json" name="type" />
     </label>
 
-        <button >
+        <button
+        onclick="
+        location.assign('/test/' + document.getElementById('search_person').value +'?person=document.getElementById('search_person').value');
+        $('#coding-time').show();
+        " 
+        >
         <i class="fas fa-thumbs-up"></i>
         GO!</button>
     </form>
 </div>
 <br>
-
-
 
 {% endblock test %}
