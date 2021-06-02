@@ -1,4 +1,6 @@
-"""This module does the query execution to the database"""
+"""
+This module does the query execution to the database
+"""
 
 
 import io
@@ -10,7 +12,9 @@ from test_dbconfig import get_db_kwargs
 DB_KWARGS = get_db_kwargs()
 
 def exc_qrs_get_dfs (query_string_list):
-    """Excute the list of queries as sql and returns dataframes.
+    
+    """
+    Excute the list of queries as sql and returns dataframes.
 
     Args:
         query_string_list ([str]): list of query strings to execute on database
@@ -20,7 +24,9 @@ def exc_qrs_get_dfs (query_string_list):
 
     Errors:
         response ([str]): returns a list (equal in length to args list length)
-                          of string message with database error"""
+                          of string message with database error
+    """
+    
     con = None
     response = []
 

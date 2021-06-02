@@ -1,4 +1,6 @@
-"""This module has the functions that gets data from the database"""
+"""
+This module has the functions that gets data from the database
+"""
 
 import logging as log
 from pandas import DataFrame
@@ -10,15 +12,15 @@ log.info('----- QRS_GETS.PY -----')
 
 def get_table (table=None, person="", type=""):
     """
-        Gets all data needed to display map from the desk being scanned.
+    Gets all data needed to display map from the desk being scanned.
 
-        Args:
-            table=None (str): determines which table to return
+    Args:
+        table=None (str): determines which table to return
 
-        Return:
-            response_object (obj): python object of returned dataframes of the following:
-                "users_table" (df): if arg was user
-                "data_table" (df): if arg was data
+    Return:
+        response_object (obj): python object of returned dataframes of the following:
+            "users_table" (df): if arg was user
+            "data_table" (df): if arg was data
     """
 
 
@@ -49,7 +51,6 @@ def get_table (table=None, person="", type=""):
         except Exception as error:
             log.info(error)
             return error
-
 
         return response_object
 

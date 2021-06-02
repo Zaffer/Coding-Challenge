@@ -1,4 +1,7 @@
-#!/usr/bin/python
+"""
+!/usr/bin/python
+"""
+
 from configparser import ConfigParser
 
 def get_db_kwargs (filename='database.ini', section='postgresql'):
